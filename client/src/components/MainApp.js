@@ -29,7 +29,7 @@ class MainApp extends Component {
         <h1>Women's World Cup</h1>
         <div className="cards">
           {data.map((player) => (
-            <Player key={player.id} player={player} />
+            <Player key={player.id} player={player} data-testid={player.name} />
           ))}
         </div>
       </div>
