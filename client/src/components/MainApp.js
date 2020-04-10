@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Player from "./Player";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+} from "recharts";
 
 class MainApp extends Component {
   constructor() {
@@ -23,12 +31,50 @@ class MainApp extends Component {
 
   render() {
     const { data } = this.state;
+    const newData = data.map((p) => {
+      let added = {
+        uv: p.searches,
+        pv: p.id,
+        amt: p.searches,
+      };
+      return { ...p, ...added };
+    });
+    console.log(newData);
     return (
       <div className="main-container">
         <h1>Women's World Cup</h1>
         <div className="cards">
           {data.map((player) => (
-            <Player key={player.id} player={player} data-testid={player.name} />
+            <div key={player.id} className="w-chart">
+              <Player
+                key={player.id}
+                player={player}
+                data-testid={player.name}
+              />
+
+              <AreaChart
+                width={350}
+                height={400}
+                data={newData}
+                margin={{
+                  top: 10,
+                  right: 30,
+                  left: 0,
+                  bottom: 0,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Area
+                  type="monotone"
+                  dataKey="uv"
+                  stroke="#8884d8"
+                  fill="#8884d8"
+                />
+              </AreaChart>
+            </div>
           ))}
         </div>
       </div>
