@@ -5,8 +5,9 @@
 }
 
 .main-container {
-  width: 1200px;
+  width: 1300px;
   margin: 0 auto;
+  color: #333;
 
   h1 {
     text-align: center;
@@ -24,12 +25,13 @@
       background: rgb(232, 229, 229);
       border-radius: 5px;
       padding: 0.5rem;
-      width: 170px;
+      width: 300px;
       margin: 0 0.5rem 1rem;
 
       h2 {
         text-transform: capitalize;
         margin-bottom: 1rem;
+        font-size: 1.3rem;
       }
 
       p {
@@ -37,4 +39,8 @@
       }
     }
   }
+}
+
+.add-to-list {
+  color: grey;
 }

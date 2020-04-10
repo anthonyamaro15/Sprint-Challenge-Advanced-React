@@ -1,11 +1,19 @@
 import React from "react";
+import { useLocalStorage } from "../costumHooks/useCostumsHooks";
 
-const Player = () => {
+const Player = ({ player }) => {
+  const [value, setValue] = useLocalStorage(false);
+
+  const toggleItem = () => {
+    setValue(!value);
+  };
+  const { name, country, searches, id } = player;
+  const addClass = value ? "add-to-list player-container" : "player-container";
   return (
-    <div className="player-container">
-      <h2>name</h2>
-      <p>country</p>
-      <p>searches</p>
+    <div className={addClass} onClick={() => toggleItem(id)}>
+      <h2>name: {name}</h2>
+      <p>country: {country}</p>
+      <p>searches: {searches}</p>
     </div>
   );
 };
