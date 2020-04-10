@@ -5,8 +5,6 @@ const Player = ({ player }) => {
   const [value, setValue] = useLocalStorage(false);
   const data = useFetch("http://localhost:5000/api/players", []);
 
-  //   console.log(data);
-
   const toggleItem = () => {
     setValue(!value);
   };
