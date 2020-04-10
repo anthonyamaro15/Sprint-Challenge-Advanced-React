@@ -5,14 +5,21 @@ export const useFetch = (url, initialValue) => {
   const [result, setResult] = useState(initialValue);
 
   useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem("data"));
+    if (savedData) {
+      setResult(savedData);
+    }
+  }, []);
+
+  useEffect(() => {
     axios
       .get(url)
       .then((res) => {
-        console.log(res.data);
+        window.localStorage.setItem("data", JSON.stringify(res.data));
         setResult(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [url]);
 
   return result;
 };

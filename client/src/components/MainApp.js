@@ -11,7 +11,6 @@ class MainApp extends Component {
   }
 
   componentDidMount() {
-    //   const players = useFetch("http://localhost:5000/api/players", [])
     axios
       .get("http://localhost:5000/api/players")
       .then((res) => {
