@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import {useFetch} from '../costumHooks/useFetch';
 import axios from "axios";
+import Player from "./Player";
 
 class MainApp extends Component {
   constructor() {
@@ -24,11 +25,14 @@ class MainApp extends Component {
   }
 
   render() {
+    const { data } = this.state;
     return (
       <div className="main-container">
-        <h2>title herer</h2>
+        <h1>title herer</h1>
         <div className="cards">
-          <p>sigle cards go here</p>
+          {data.map((player) => (
+            <Player key={player.id} player={player} />
+          ))}
         </div>
       </div>
     );
